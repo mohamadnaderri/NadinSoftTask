@@ -7,7 +7,7 @@ namespace NadinSoftTask.DomainModel.Product
     /// </summary>
     public class Product
     {
-        public Product(string name, DateTime produceDate, string manufacturePhoneNumber, string manufactureEmail, bool isAvailable)
+        public Product(string name, DateTime produceDate, string manufacturePhoneNumber, string manufactureEmail, bool isAvailable, Guid creator)
         {
             ThrowExceptionIfNameIsNullOrEmpty(name);
             ThrowExceptionIfProduceDateIsInvalid(produceDate);
@@ -22,6 +22,7 @@ namespace NadinSoftTask.DomainModel.Product
             this.ManufacturerPhoneNumber = manufacturePhoneNumber;
             this.ManufacturerEmail = manufactureEmail;
             this.IsAvailable = isAvailable;
+            Creator = creator;
         }
 
         /// <summary>
@@ -33,6 +34,11 @@ namespace NadinSoftTask.DomainModel.Product
         /// تاریخ ایجاد
         /// </summary>
         public DateTime CreationDate { get; private set; }
+
+        /// <summary>
+        /// شناسه محصول
+        /// </summary>
+        public Guid Creator { get; private set; }
 
         /// <summary>
         /// نام محصول
@@ -98,7 +104,7 @@ namespace NadinSoftTask.DomainModel.Product
 
         private void ThrowExceptionIfIsAvailableIsInvalid(bool isAvailable)
         {
-            if (isAvailable)
+            if (!isAvailable)
                 throw new Exception("محصول بدون موجودی امکان اضافه شدن ندارد.");
         }
 
