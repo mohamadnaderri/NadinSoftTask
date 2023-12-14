@@ -1,5 +1,6 @@
 ﻿using NadinSoftTask.DomainModel.Product;
-using NadinSoftTask.Infrastructure;
+using NadinSoftTask.DomainModel.Product.ValueObjects;
+using NadinSoftTask.Infrastructure.Helpers;
 
 namespace NadinSoftTask.Tests
 {
@@ -15,7 +16,7 @@ namespace NadinSoftTask.Tests
             bool isAvailable = true;
 
             // Act
-            var product = new Product(name, DateTime.Now.AddYears(-1), manufacturerPhoneNumber, manufacturerEmail, isAvailable, Guid.NewGuid());
+            var product = new Product(name, DateTime.Now.AddYears(-1), manufacturerPhoneNumber, manufacturerEmail, isAvailable, new OperatorInfo(Guid.NewGuid(), "test"));
 
             // Assert
             Assert.True(product.ManufacturerEmail.IsValidEmail());
@@ -26,12 +27,12 @@ namespace NadinSoftTask.Tests
         {
             // Arrange
             string name = "Sample Product";
-            string invalidEmail = "example@email.com"; 
+            string invalidEmail = "example@email.com";
             string manufacturerPhoneNumber = "02155446325";
             bool isAvailable = true;
 
             // Act
-            var product = new Product(name, DateTime.Now.AddDays(-1), manufacturerPhoneNumber, invalidEmail, isAvailable, Guid.NewGuid());
+            var product = new Product(name, DateTime.Now.AddDays(-1), manufacturerPhoneNumber, invalidEmail, isAvailable, new OperatorInfo(Guid.NewGuid(), "test"));
 
             // Assert
             Assert.True(product.ManufacturerPhoneNumber.IsValidPhoneNumber());
@@ -47,7 +48,7 @@ namespace NadinSoftTask.Tests
             bool isAvailable = true;
 
             // Act
-            var product = new Product(name, DateTime.Now.AddDays(-1), manufacturerPhoneNumber, invalidEmail, isAvailable, Guid.NewGuid());
+            var product = new Product(name, DateTime.Now.AddDays(-1), manufacturerPhoneNumber, invalidEmail, isAvailable, new OperatorInfo(Guid.NewGuid(), "test"));
 
             // Assert
             Assert.True(product.IsAvailable);
@@ -63,7 +64,7 @@ namespace NadinSoftTask.Tests
             bool isAvailable = true;
 
             // Act
-            var product = new Product(name, DateTime.Now, manufacturerPhoneNumber, invalidEmail, isAvailable, Guid.NewGuid());
+            var product = new Product(name, DateTime.Now, manufacturerPhoneNumber, invalidEmail, isAvailable, new OperatorInfo(Guid.NewGuid(), "test"));
 
             // Assert
             Assert.True(product.ProduceDate.Date == DateTime.Now.Date);

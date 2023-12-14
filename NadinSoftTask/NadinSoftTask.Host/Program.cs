@@ -1,5 +1,5 @@
-using Castle.Windsor.Installer;
 using Microsoft.EntityFrameworkCore;
+using NadinSoftTask.Configuration;
 using NadinSoftTask.Infrastructure.Persistence.Context;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,7 +13,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DatabaseContext>(options =>
         options.UseSqlServer(builder.Configuration.GetConnectionString("Db")));
 
-
+Bootstrapper.WireUp();
 
 var app = builder.Build();
 

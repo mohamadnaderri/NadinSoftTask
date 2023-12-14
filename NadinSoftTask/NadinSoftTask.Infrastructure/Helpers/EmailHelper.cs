@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace NadinSoftTask.Infrastructure
+namespace NadinSoftTask.Infrastructure.Helpers
 {
     public static class EmailHelper
     {

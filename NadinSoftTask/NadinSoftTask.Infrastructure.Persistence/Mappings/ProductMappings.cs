@@ -14,6 +14,12 @@ namespace NadinSoftTask.Infrastructure.Persistence.Mappings
             builder.Property(p => p.ManufacturerEmail).HasMaxLength(50);
             builder.Property(p => p.ManufacturerPhoneNumber).HasMaxLength(11);
 
+            builder.OwnsOne(q => q.Creator, c =>
+            {
+                c.Property(o => o.OperatorId).HasColumnName("OperatorId");
+                c.Property(o => o.Name).HasColumnName("OperatorName");
+            });
+
             builder.ToTable("Products");
         }
     }

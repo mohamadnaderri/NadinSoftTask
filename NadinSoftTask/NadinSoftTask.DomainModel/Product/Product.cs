@@ -1,4 +1,5 @@
-﻿using NadinSoftTask.Infrastructure;
+﻿using NadinSoftTask.DomainModel.Product.ValueObjects;
+using NadinSoftTask.Infrastructure.Helpers;
 
 namespace NadinSoftTask.DomainModel.Product
 {
@@ -7,7 +8,7 @@ namespace NadinSoftTask.DomainModel.Product
     /// </summary>
     public class Product
     {
-        public Product(string name, DateTime produceDate, string manufacturePhoneNumber, string manufactureEmail, bool isAvailable, Guid creator)
+        public Product(string name, DateTime produceDate, string manufacturePhoneNumber, string manufactureEmail, bool isAvailable, OperatorInfo creator)
         {
             ThrowExceptionIfNameIsNullOrEmpty(name);
             ThrowExceptionIfProduceDateIsInvalid(produceDate);
@@ -22,7 +23,7 @@ namespace NadinSoftTask.DomainModel.Product
             this.ManufacturerPhoneNumber = manufacturePhoneNumber;
             this.ManufacturerEmail = manufactureEmail;
             this.IsAvailable = isAvailable;
-            Creator = creator;
+            this.Creator = creator;
         }
 
         /// <summary>
@@ -36,9 +37,9 @@ namespace NadinSoftTask.DomainModel.Product
         public DateTime CreationDate { get; private set; }
 
         /// <summary>
-        /// شناسه محصول
+        /// ایجاد کننده
         /// </summary>
-        public Guid Creator { get; private set; }
+        public OperatorInfo Creator { get; private set; }
 
         /// <summary>
         /// نام محصول

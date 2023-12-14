@@ -10,7 +10,7 @@
         /// </summary>
         /// <param name="id"> شناسه محصول</param>
         /// <returns></returns>
-        Task<Product> GetById(Guid id);
+        Task<Product?> GetById(Guid id);
 
         /// <summary>
         /// افزودن محصول

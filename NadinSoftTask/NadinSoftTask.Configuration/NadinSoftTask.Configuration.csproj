@@ -11,4 +11,10 @@
     <PackageReference Include="Castle.Windsor.MsDependencyInjection" Version="4.1.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\NadinSoftTask.DomainModel\NadinSoftTask.DomainModel.csproj" />
+    <ProjectReference Include="..\NadinSoftTask.Infrastructure.Persistence.Read\NadinSoftTask.Infrastructure.Persistence.Read.csproj" />
+    <ProjectReference Include="..\NadinSoftTask.Infrastructure.Persistence.Write\NadinSoftTask.Infrastructure.Persistence.Write.csproj" />
+  </ItemGroup>
+
 </Project>

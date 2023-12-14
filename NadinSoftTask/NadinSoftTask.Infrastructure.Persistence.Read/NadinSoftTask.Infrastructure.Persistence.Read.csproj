@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\NadinSoftTask.DomainModel\NadinSoftTask.DomainModel.csproj" />
+    <ProjectReference Include="..\NadinSoftTask.Infrastructure.Persistence\NadinSoftTask.Infrastructure.Persistence.csproj" />
+  </ItemGroup>
+
 </Project>
