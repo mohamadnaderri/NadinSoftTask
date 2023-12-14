@@ -11,35 +11,33 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Domain", "2 - Domain", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Infrastructure", "3 - Infrastructure", "{ACD73ED2-3432-45E4-B995-1131DC333D24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NadinSoftTask.Host", "NadinSoftTask.Host\NadinSoftTask.Host.csproj", "{A4A07D68-46E5-490A-B546-AF97DC329CB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NadinSoftTask.Host", "NadinSoftTask.Host\NadinSoftTask.Host.csproj", "{A4A07D68-46E5-490A-B546-AF97DC329CB7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NadinSoftTask.DomainModel", "NadinSoftTask.DomainModel\NadinSoftTask.DomainModel.csproj", "{FA6FD42E-AA7F-44B1-B560-6CA7E2DC5689}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NadinSoftTask.DomainModel", "NadinSoftTask.DomainModel\NadinSoftTask.DomainModel.csproj", "{FA6FD42E-AA7F-44B1-B560-6CA7E2DC5689}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Persistence", "Persistence", "{AF2A77BF-378B-4C8B-ABBF-37200C84FD26}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NadinSoftTask.Infrastructure.Persistence", "NadinSoftTask.Infrastructure.Persistence\NadinSoftTask.Infrastructure.Persistence.csproj", "{ADE47E6F-2EF4-4904-9DC9-7B6F76EC9490}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NadinSoftTask.Infrastructure.Persistence", "NadinSoftTask.Infrastructure.Persistence\NadinSoftTask.Infrastructure.Persistence.csproj", "{ADE47E6F-2EF4-4904-9DC9-7B6F76EC9490}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NadinSoftTask.Infrastructure.Persistence.Read", "NadinSoftTask.Infrastructure.Persistence.Read\NadinSoftTask.Infrastructure.Persistence.Read.csproj", "{63D043FC-DD9B-4165-BCF8-25A2931D1CCA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NadinSoftTask.Infrastructure.Persistence.Read", "NadinSoftTask.Infrastructure.Persistence.Read\NadinSoftTask.Infrastructure.Persistence.Read.csproj", "{63D043FC-DD9B-4165-BCF8-25A2931D1CCA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NadinSoftTask.Infrastructure.Persistence.Write", "NadinSoftTask.Infrastructure.Persistence.Write\NadinSoftTask.Infrastructure.Persistence.Write.csproj", "{539F84CB-B08D-4FC1-B8AD-109A163DB4A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NadinSoftTask.Infrastructure.Persistence.Write", "NadinSoftTask.Infrastructure.Persistence.Write\NadinSoftTask.Infrastructure.Persistence.Write.csproj", "{539F84CB-B08D-4FC1-B8AD-109A163DB4A8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "QueryService", "QueryService", "{297D733F-A12C-4378-9D4A-59E737244495}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CommandHandler", "CommandHandler", "{750C829B-B6CE-4846-8CEC-99A5E83BA7AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NadinSoftTask.QueryModels", "NadinSoftTask.QueryModels\NadinSoftTask.QueryModels.csproj", "{A135B9E1-CB94-4991-84AD-18615104625B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NadinSoftTask.QueryModels", "NadinSoftTask.QueryModels\NadinSoftTask.QueryModels.csproj", "{A135B9E1-CB94-4991-84AD-18615104625B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NadinSoftTask.QueryModels.Interfaces", "NadinSoftTask.QueryModels.Interfaces\NadinSoftTask.QueryModels.Interfaces.csproj", "{D91C908E-116C-4F11-B2B6-4B1CCE5CE542}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NadinSoftTask.QueryModels.Interfaces", "NadinSoftTask.QueryModels.Interfaces\NadinSoftTask.QueryModels.Interfaces.csproj", "{D91C908E-116C-4F11-B2B6-4B1CCE5CE542}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NadinSoftTask.QueryModels.Implementations", "NadinSoftTask.QueryModels.Implementations\NadinSoftTask.QueryModels.Implementations.csproj", "{CEBA240C-E57B-47DD-892F-C2C92F1C7487}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NadinSoftTask.QueryModels.Implementations", "NadinSoftTask.QueryModels.Implementations\NadinSoftTask.QueryModels.Implementations.csproj", "{CEBA240C-E57B-47DD-892F-C2C92F1C7487}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NadinSoftTask.Commands", "NadinSoftTask.Commands\NadinSoftTask.Commands.csproj", "{FD7240A6-64FE-42E2-9364-5C180E22A527}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NadinSoftTask.Commands", "NadinSoftTask.Commands\NadinSoftTask.Commands.csproj", "{FD7240A6-64FE-42E2-9364-5C180E22A527}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NadinSoftTask.CommandHandlers", "NadinSoftTask.CommandHandlers\NadinSoftTask.CommandHandlers.csproj", "{FCE40EF6-32E0-4E47-9245-DE5BA3D45F1E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NadinSoftTask.CommandHandlers", "NadinSoftTask.CommandHandlers\NadinSoftTask.CommandHandlers.csproj", "{FCE40EF6-32E0-4E47-9245-DE5BA3D45F1E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NadinSoftTask.Configuration", "NadinSoftTask.Configuration\NadinSoftTask.Configuration.csproj", "{D8984897-C5C9-4F70-9C9E-176F34E106F8}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", "{76F4DAFD-E401-4BDC-8194-0CA62C19C19B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NadinSoftTask.Configuration", "NadinSoftTask.Configuration\NadinSoftTask.Configuration.csproj", "{D8984897-C5C9-4F70-9C9E-176F34E106F8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
