@@ -43,6 +43,14 @@
             return new OkObjectResult(new { Token = generatedToken, UserId = user.Id, message = "ورود انجام گردید", phoneNumberConfirm = true });
         }
 
+        [HttpPost]
+        [Route("logout")]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return Ok(new { message = "Logged out" });
+        }
+
         private async Task<IdentityUser> GetUserByUserName(string userName)
         {
             var user = await _userManager.FindByNameAsync(userName);
@@ -78,14 +86,5 @@
         {
             return userRoles.Select(userRole => _roleManager.GetRoleIdAsync(new IdentityRole(userRole)).Result).ToList();
         }
-
-        [HttpPost]
-        [Route("logout")]
-        public async Task<IActionResult> Logout()
-        {
-            await _signInManager.SignOutAsync();
-            return Ok(new { message = "Logged out" });
-        }
     }
-
 }

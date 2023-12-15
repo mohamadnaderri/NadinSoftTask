@@ -1,10 +1,21 @@
+using AutoMapper;
+using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using NadinSoftTask.CommandHandlers;
+using NadinSoftTask.Commands.Product;
 using NadinSoftTask.Configuration;
+using NadinSoftTask.DomainModel.Product.Interfaces;
 using NadinSoftTask.Host.Helpers;
+using NadinSoftTask.Infrastructure;
 using NadinSoftTask.Infrastructure.Persistence.Context;
+using NadinSoftTask.Infrastructure.Persistence.Read.Repositories;
+using NadinSoftTask.Infrastructure.Persistence.Write.Repositories;
+using NadinSoftTask.Infrastructure.Persistence.Write;
+using System.ComponentModel;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,7 +33,24 @@ builder.Services.AddDbContext<IdentityContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Db")));
 
 builder.Services.AddScoped<IJwtFactory, JwtFactory>();
-Bootstrapper.WireUp();
+
+var mapperConfig = new MapperConfiguration(mc =>
+{
+    mc.AddProfile(new ProductMapper());
+});
+
+builder.Services.AddScoped<IProductReadOnlyRepository, ProductReadOlyRepository>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+IMapper mapper = mapperConfig.CreateMapper();
+builder.Services.AddSingleton(mapper);
+builder.Services.AddMediatR(cfg =>
+                 cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
+builder.Services.AddScoped<IRequestHandler<CreateProductCommand, bool>, ProductCommandHandler>();
+builder.Services.AddScoped<IRequestHandler<UpdateProductCommand, bool>, ProductCommandHandler>();
+builder.Services.AddScoped<IRequestHandler<DeleteProductCommand, bool>, ProductCommandHandler>();
+builder.Services.AddScoped<IRequestHandler<SoftDeleteProductCommand, bool>, ProductCommandHandler>();
 
 // jwt wire up
 // Get options from app settings
@@ -108,6 +136,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
 
 using (var scope = app.Services.CreateScope())
 {

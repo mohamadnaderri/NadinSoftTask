@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\NadinSoftTask.CommandHandlers\NadinSoftTask.CommandHandlers.csproj" />
     <ProjectReference Include="..\NadinSoftTask.Commands\NadinSoftTask.Commands.csproj" />
     <ProjectReference Include="..\NadinSoftTask.Configuration\NadinSoftTask.Configuration.csproj" />
     <ProjectReference Include="..\NadinSoftTask.Infrastructure.Persistence\NadinSoftTask.Infrastructure.Persistence.csproj" />

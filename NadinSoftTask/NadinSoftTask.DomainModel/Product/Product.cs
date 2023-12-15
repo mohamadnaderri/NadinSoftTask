@@ -79,6 +79,21 @@ namespace NadinSoftTask.DomainModel.Product
             this.IsDeleted = true;
         }
 
+        public void Update(string name, DateTime produceDate, string manufacturePhoneNumber, string manufactureEmail, bool isAvailable)
+        {
+            ThrowExceptionIfNameIsNullOrEmpty(name);
+            ThrowExceptionIfProduceDateIsInvalid(produceDate);
+            ThrowExceptionIfManufacturerPhoneNumberIsInvalid(manufacturePhoneNumber);
+            ThrowExceptionIfManufacturerEmailIsInvalid(manufactureEmail);
+            ThrowExceptionIfIsAvailableIsInvalid(isAvailable);
+
+            this.Name = name;
+            this.ProduceDate = produceDate;
+            this.ManufacturerPhoneNumber = manufacturePhoneNumber;
+            this.ManufacturerEmail = manufactureEmail;
+            this.IsAvailable = isAvailable;
+        }
+
         private void ThrowExceptionIfNameIsNullOrEmpty(string name)
         {
             if (string.IsNullOrEmpty(name))

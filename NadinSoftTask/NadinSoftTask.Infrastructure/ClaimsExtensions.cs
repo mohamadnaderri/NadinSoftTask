@@ -11,23 +11,17 @@ namespace NadinSoftTask.Infrastructure
                 return null;
             }
 
-            if (!Guid.TryParse(GetClaim(claims, "tokenId"), out var result))
+            if (!Guid.TryParse(GetClaim(claims, "id"), out var userId))
             {
                 return null;
             }
 
-            if (!Guid.TryParse(GetClaim(claims, "userId"), out var result2))
-            {
-                return null;
-            }
-
-            long.TryParse(GetClaim(claims, "tokenExp"), out var result3);
-            DateTime tokenExpireAt = new DateTime(result3);
-            long.TryParse(GetClaim(claims, "refreshExp"), out var result4);
-            DateTime refreshExpireAt = new DateTime(result4);
+            long.TryParse(GetClaim(claims, "tokenExp"), out var tokenExp);
+            DateTime tokenExpireAt = new DateTime(tokenExp);
+            long.TryParse(GetClaim(claims, "refreshExp"), out var refreshExp);
+            DateTime refreshExpireAt = new DateTime(refreshExp);
             UserInfo userInfo = new UserInfo();
-            userInfo.UserId = result2;
-            userInfo.TokenId = result;
+            userInfo.UserId = userId;
             userInfo.Name = GetClaim(claims, "givenName");
             userInfo.Roles = (GetClaim(claims, "userRoles") ?? "").Split(new char[1] { ',' }, StringSplitOptions.RemoveEmptyEntries).ToList();
             userInfo.PersonType = GetClaim(claims, "personType");

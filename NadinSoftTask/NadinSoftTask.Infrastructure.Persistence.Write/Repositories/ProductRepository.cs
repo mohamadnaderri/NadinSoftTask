@@ -33,7 +33,12 @@ namespace NadinSoftTask.Infrastructure.Persistence.Write.Repositories
         /// <inheritdoc/>
         public Task<Product?> GetById(Guid id)
         {
-            return Context.Products.FirstOrDefaultAsync(q => q.Id == id);
+            return Context.Products.Where(q => !q.IsDeleted).FirstOrDefaultAsync(q => q.Id == id);
+        }
+
+        public IQueryable<Product> AsQuery()
+        {
+            return Context.Products.AsQueryable();
         }
     }
 }

@@ -8,9 +8,9 @@ namespace NadinSoftTask.Infrastructure
         public string? Token { get; set; }
 
         [JsonIgnore]
-        UserInfo? CommandSender { get; set; }
+        public UserInfo? CommandSender { get; set; }
 
-        public void SetCommandSenderInfo(UserInfo? commandSender)
+        public void SetCommandSenderInfo(UserInfo commandSender)
         {
             this.CommandSender = commandSender;
         }

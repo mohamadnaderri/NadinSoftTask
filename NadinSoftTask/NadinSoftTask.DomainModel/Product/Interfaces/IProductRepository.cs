@@ -21,5 +21,7 @@
         /// حذف محصول
         /// </summary>
         void Delete(Guid id);
+
+        IQueryable<Product> AsQuery();
     }
 }
