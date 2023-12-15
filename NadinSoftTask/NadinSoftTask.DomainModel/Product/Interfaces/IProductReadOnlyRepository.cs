@@ -16,9 +16,8 @@
         /// <summary>
         /// دریافت لیست محصولات
         /// </summary>
-        /// <param name="operatorId"> شناسه شخص ایجاد کننده محصول</param>
         /// <param name="operatorName"> نام شخص ایجاد کننده محصول</param>
         /// <returns></returns>
-        Task<List<Product>?> GetAll(Guid? operatorId, string? operatorName);
+        Task<List<Product>?> GetAll(string? operatorName);
     }
 }

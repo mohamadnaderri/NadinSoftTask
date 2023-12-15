@@ -5,9 +5,9 @@ using NadinSoftTask.DomainModel.Product.ValueObjects;
 
 namespace NadinSoftTask.CommandHandlers
 {
-    public class ProductMapper : Profile
+    public class ProductCommandMapper : Profile
     {
-        public ProductMapper()
+        public ProductCommandMapper()
         {
             CreateMap<CreateProductCommand, Product>()
             .ConstructUsing(src => new Product(
@@ -16,7 +16,7 @@ namespace NadinSoftTask.CommandHandlers
                 src.ManufacturerPhoneNumber,
                 src.ManufacturerEmail,
                 src.IsAvailable,
-                new OperatorInfo(src.CommandSender.UserId, src.CommandSender.UserName)
+                new OperatorInfo(src.CommandSender.UserId, src.CommandSender.Name)
             ));
         }
     }

@@ -1,21 +1,21 @@
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using NadinSoftTask.CommandHandlers;
 using NadinSoftTask.Commands.Product;
-using NadinSoftTask.Configuration;
 using NadinSoftTask.DomainModel.Product.Interfaces;
 using NadinSoftTask.Host.Helpers;
 using NadinSoftTask.Infrastructure;
 using NadinSoftTask.Infrastructure.Persistence.Context;
 using NadinSoftTask.Infrastructure.Persistence.Read.Repositories;
-using NadinSoftTask.Infrastructure.Persistence.Write.Repositories;
 using NadinSoftTask.Infrastructure.Persistence.Write;
-using System.ComponentModel;
+using NadinSoftTask.Infrastructure.Persistence.Write.Repositories;
+using NadinSoftTask.QueryHandlers;
+using NadinSoftTask.QueryModels.Implementations;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -36,7 +36,8 @@ builder.Services.AddScoped<IJwtFactory, JwtFactory>();
 
 var mapperConfig = new MapperConfiguration(mc =>
 {
-    mc.AddProfile(new ProductMapper());
+    mc.AddProfile(new ProductCommandMapper());
+    mc.AddProfile(new ProductDtoMapper());
 });
 
 builder.Services.AddScoped<IProductReadOnlyRepository, ProductReadOlyRepository>();
@@ -51,6 +52,10 @@ builder.Services.AddScoped<IRequestHandler<CreateProductCommand, bool>, ProductC
 builder.Services.AddScoped<IRequestHandler<UpdateProductCommand, bool>, ProductCommandHandler>();
 builder.Services.AddScoped<IRequestHandler<DeleteProductCommand, bool>, ProductCommandHandler>();
 builder.Services.AddScoped<IRequestHandler<SoftDeleteProductCommand, bool>, ProductCommandHandler>();
+
+builder.Services.AddScoped<IRequestHandler<GetProductQueryModel, ProductDto>, ProductQueryHandler>();
+builder.Services.AddScoped<IRequestHandler<GetAllProductQueryModel, List<ProductDto>>, ProductQueryHandler>();
+
 
 // jwt wire up
 // Get options from app settings
@@ -122,6 +127,33 @@ builder.Services.AddAuthorization(options =>
             Constants.Strings.JwtClaims.ApiAccess));
 });
 
+builder.Services.AddSwaggerGen(c =>
+{
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Description = "JWT Authorization header using the Bearer scheme",
+        Name = "Authorization",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.Http,
+        Scheme = "bearer"
+    });
+
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            Array.Empty<string>()
+        }
+    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -129,6 +161,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+
 }
 
 app.UseHttpsRedirection();

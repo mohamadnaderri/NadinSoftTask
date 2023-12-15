@@ -15,14 +15,12 @@ namespace NadinSoftTask.Infrastructure.Persistence.Read.Repositories
         }
 
         /// <inheritdoc/>
-        public Task<List<Product>?> GetAll(Guid? operatorId, string? operatorName)
+        public Task<List<Product>?> GetAll(string? operatorName)
         {
             var products = Context.Products.AsQueryable();
-            if (operatorId is not null)
-                products.Where(q => q.Creator.OperatorId == operatorId);
 
             if (!string.IsNullOrEmpty(operatorName))
-                products.Where(q => q.Creator.Name.Contains(operatorName));
+                products = products.Where(q => q.Creator.Name.Contains(operatorName));
 
             return products.ToListAsync();
         }

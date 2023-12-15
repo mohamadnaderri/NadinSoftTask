@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\NadinSoftTask.QueryModels.Implementations\NadinSoftTask.QueryModels.csproj" />
+  </ItemGroup>
+
 </Project>

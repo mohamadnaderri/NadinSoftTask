@@ -22,7 +22,7 @@ namespace NadinSoftTask.Infrastructure
             DateTime refreshExpireAt = new DateTime(refreshExp);
             UserInfo userInfo = new UserInfo();
             userInfo.UserId = userId;
-            userInfo.Name = GetClaim(claims, "givenName");
+            userInfo.Name = GetClaim(claims, "userName");
             userInfo.Roles = (GetClaim(claims, "userRoles") ?? "").Split(new char[1] { ',' }, StringSplitOptions.RemoveEmptyEntries).ToList();
             userInfo.PersonType = GetClaim(claims, "personType");
             userInfo.PhoneNumber = GetClaim(claims, "phoneNumber");

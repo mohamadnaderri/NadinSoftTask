@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NadinSoftTask.Commands.Product;
 using NadinSoftTask.Infrastructure;
+using NadinSoftTask.QueryModels.Implementations;
 using System.Security.Claims;
 
 namespace NadinSoftTask.Host.Controllers
@@ -19,6 +20,31 @@ namespace NadinSoftTask.Host.Controllers
         public ProductsController(ISender sender)
         {
             _sender = sender;
+        }
+
+        /// <summary>
+        /// دریافت جزئیات محصول 
+        /// </summary>
+        /// <param name="id">شناسه محصول</param>
+        /// <returns></returns>
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(Guid id)
+        {
+            var result = await _sender.Send(new GetProductQueryModel(id));
+            return Ok(result);
+        }
+
+        [AllowAnonymous]
+        /// <summary>
+        /// دریافت لیست محصولات 
+        /// </summary>
+        /// <param name="operatorName">کاربر ایجاد کننده</param>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IActionResult> GetAll(string? operatorName)
+        {
+            var result = await _sender.Send(new GetAllProductQueryModel(operatorName));
+            return Ok(result);
         }
 
         /// <summary>

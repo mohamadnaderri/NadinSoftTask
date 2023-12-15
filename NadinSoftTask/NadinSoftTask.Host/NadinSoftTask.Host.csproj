@@ -21,8 +21,11 @@
   <ItemGroup>
     <ProjectReference Include="..\NadinSoftTask.CommandHandlers\NadinSoftTask.CommandHandlers.csproj" />
     <ProjectReference Include="..\NadinSoftTask.Commands\NadinSoftTask.Commands.csproj" />
-    <ProjectReference Include="..\NadinSoftTask.Configuration\NadinSoftTask.Configuration.csproj" />
+    <ProjectReference Include="..\NadinSoftTask.Infrastructure.Persistence.Read\NadinSoftTask.Infrastructure.Persistence.Read.csproj" />
+    <ProjectReference Include="..\NadinSoftTask.Infrastructure.Persistence.Write\NadinSoftTask.Infrastructure.Persistence.Write.csproj" />
     <ProjectReference Include="..\NadinSoftTask.Infrastructure.Persistence\NadinSoftTask.Infrastructure.Persistence.csproj" />
+    <ProjectReference Include="..\NadinSoftTask.QueryModels.Implementations\NadinSoftTask.QueryModels.csproj" />
+    <ProjectReference Include="..\NadinSoftTask.QueryModels.Interfaces\NadinSoftTask.QueryHandlers.csproj" />
   </ItemGroup>
 
 </Project>
